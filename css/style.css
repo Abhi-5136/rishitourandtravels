@@ -1,4 +1,14 @@
 /********** Template CSS **********/
+html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    content-visibility: auto;
+}
+
 :root {
     --primary: #0066CC;
     --secondary: #FFBB00;
@@ -142,7 +152,8 @@
 ======================================== */
 @media (max-width: 991.98px) {
 
-    /* ── Sticky wrapper: always white on mobile ── */
+    /* ── Sticky wrapper & Flex layout: always single-row white header on mobile ── */
+    .navbar,
     .navbar-light,
     .sticky-top.navbar-light {
         position: fixed !important;
@@ -151,8 +162,14 @@
         right: 0 !important;
         background: #FFFFFF !important;
         box-shadow: 0 2px 16px rgba(0, 0, 0, 0.10);
-        padding: 10px 25px !important;
+        padding: 8px 12px !important;
         z-index: 1050;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
     }
 
     .container-fluid.p-0.mb-0 {
@@ -164,23 +181,42 @@
         margin-top: 120px !important;
     }
 
-    /* ── Brand: shrink the big title ── */
+    /* ── Brand & Logo: compact and shrink text smoothly on mobile ── */
+    .navbar-brand {
+        display: flex !important;
+        align-items: center !important;
+        min-width: 0 !important;
+        flex: 1 1 auto !important;
+        max-width: calc(100% - 52px) !important;
+    }
+
+    .navbar-brand img,
+    .navbar-light .navbar-brand img,
+    .sticky-top.navbar-light .navbar-brand img {
+        height: 40px !important;
+        max-height: 40px !important;
+        width: auto !important;
+        margin-right: 8px !important;
+    }
+
     .navbar-brand h1,
     .navbar-brand .text-primary,
     .navbar-brand .text-dark {
-        font-size: 1.3rem !important;
+        font-size: clamp(1.05rem, 4.2vw, 1.25rem) !important;
         line-height: 1.2;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 280px;
+        margin: 0 !important;
     }
 
 
-    /* ── Toggler: pill-shaped, themed ── */
+    /* ── Toggler: pill-shaped, themed, strictly fixed top right ── */
     .navbar-toggler {
-        padding: 7px 12px;
-        font-size: 1.1rem;
+        flex-shrink: 0 !important;
+        margin-left: auto !important;
+        padding: 6px 10px !important;
+        font-size: 1.05rem !important;
         line-height: 1;
         border: 2px solid var(--primary);
         border-radius: 8px;

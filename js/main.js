@@ -124,7 +124,7 @@
         });
 
 
-        // Popular Packages Carousel — 1 full card + half of next card peeking
+        // Popular Packages Carousel — 1 full card + partial peek of next card
         var popPkgCarousel = $(".popular-packages-carousel").owlCarousel({
             autoplay: true,
             smartSpeed: 600,
@@ -133,10 +133,10 @@
             loop: true,
             nav: false,
             responsive: {
-                0: { items: 1, stagePadding: 85 },
-                576: { items: 1, stagePadding: 150 },
-                768: { items: 2, stagePadding: 80 },
-                992: { items: 3, stagePadding: 50 }
+                0: { items: 1, stagePadding: 60 },
+                576: { items: 1, stagePadding: 80 },
+                768: { items: 1, stagePadding: 120 },
+                992: { items: 2, stagePadding: 60 }
             }
         });
         $('#pop-pkg-prev').click(function () {
@@ -146,7 +146,7 @@
             popPkgCarousel.trigger('next.owl.carousel');
         });
 
-        // Popular Varanasi Packages Carousel — 1 full card + half of next card peeking
+        // Popular Varanasi Packages Carousel — 1 full card + partial peek of next card
         var vnsPkgCarousel = $(".varanasi-packages-carousel").owlCarousel({
             autoplay: true,
             smartSpeed: 600,
@@ -155,10 +155,10 @@
             loop: true,
             nav: false,
             responsive: {
-                0: { items: 1, stagePadding: 85 },
-                576: { items: 1, stagePadding: 150 },
-                768: { items: 2, stagePadding: 80 },
-                992: { items: 3, stagePadding: 50 }
+                0: { items: 1, stagePadding: 60 },
+                576: { items: 1, stagePadding: 80 },
+                768: { items: 1, stagePadding: 120 },
+                992: { items: 2, stagePadding: 60 }
             }
         });
         $('#vns-pkg-prev').click(function () {

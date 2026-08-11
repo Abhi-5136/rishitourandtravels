@@ -1764,7 +1764,7 @@ img {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
-    height: 360px;
+    aspect-ratio: 1 / 1;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: block;
@@ -1845,7 +1845,7 @@ img {
 
 @media (max-width: 768px) {
     .pkg-card-item {
-        height: 300px;
+        /* aspect-ratio: 1/1 already handles square on mobile */
     }
 
     .pkg-card-title {

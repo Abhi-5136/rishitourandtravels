@@ -79,12 +79,6 @@ img {
     color: #004d99 !important;
 }
 
-.btn-secondary {
-    background-color: var(--secondary) !important;
-    border-color: var(--secondary) !important;
-    color: #000 !important;
-}
-
 .btn-secondary:hover {
     background-color: #e6a800 !important;
     border-color: #e6a800 !important;
@@ -268,20 +262,6 @@ img {
     }
 
 
-
-    @keyframes flyIn {
-        from {
-            opacity: 0;
-            transform: translate(15px, -15px) scale(0.9);
-        }
-
-        to {
-            opacity: 1;
-            transform: translate(0, 0) scale(1);
-        }
-    }
-
-
     /* ── Aggressive Visibility Fix for Mobile Links ── */
     .navbar-light .navbar-nav .nav-link,
     .navbar-light .navbar-nav .nav-item .nav-link,
@@ -377,10 +357,6 @@ img {
         transform: none;
     }
 
-    /* ── Brand image if used ── */
-    .navbar-light .navbar-brand img {
-        max-height: 50px;
-    }
 }
 
 
@@ -1844,10 +1820,6 @@ img {
 }
 
 @media (max-width: 768px) {
-    .pkg-card-item {
-        /* aspect-ratio: 1/1 already handles square on mobile */
-    }
-
     .pkg-card-title {
         font-size: 15px;
     }
@@ -1930,227 +1902,147 @@ img {
     }
 }
 
-/* ── 2. Navbar: prevent overflow on 13" / 1024px laptops ─────
-   Reduce nav-link right-margin and font size on mid-range      */
+/* ══════════════════════════════════════════════
+   LAPTOP (992–1199px) — all rules in one block
+   ══════════════════════════════════════════════ */
 @media (min-width: 992px) and (max-width: 1199px) {
+    /* Navbar */
     .navbar-light .navbar-nav .nav-link {
         margin-right: 18px !important;
         font-size: 15px !important;
         padding: 22px 0 !important;
     }
-
-    /* Compact Chat button */
     .navbar .btn-primary.rounded-pill {
         padding: 8px 14px !important;
         font-size: 14px !important;
     }
-
-    /* Reduce brand text to prevent overflow */
     .navbar-brand h1 {
         font-size: 1.15rem !important;
     }
-
     .navbar-brand img,
     .navbar-light .navbar-brand img {
         height: 44px !important;
         max-height: 44px !important;
     }
-}
 
-/* ── 3. Hero carousel height on standard laptops ────────────
-   992–1199px: Constrain carousel so it doesn't look overly
-   tall on smaller laptop screens                               */
-@media (min-width: 992px) and (max-width: 1199px) {
-
+    /* Hero carousel */
     .header-carousel .owl-carousel-item,
     .header-carousel .owl-item {
         height: 520px !important;
         min-height: 520px;
     }
-
-    /* Tighten carousel text so it fits without overflow */
     .header-carousel .carousel-content h1.display-3 {
         font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important;
     }
-
     .header-carousel .carousel-content p.fs-4 {
         font-size: clamp(1rem, 1.6vw, 1.25rem) !important;
     }
+
+    /* Container */
+    .container-xxl {
+        padding-left: 2% !important;
+        padding-right: 2% !important;
+    }
+
+    /* Booking */
+    .booking.p-5 {
+        padding: 2.5rem !important;
+    }
+    .booking .row.g-5 {
+        --bs-gutter-y: 2rem;
+    }
+
+    /* Timeline */
+    .timeline-container { gap: 14px; }
+    .timeline-content { padding: 14px !important; }
+    .timeline-icon { width: 60px; height: 60px; }
+    .timeline-icon i { font-size: 1.5rem !important; }
+    .timeline-number { width: 40px; height: 40px; font-size: 18px; }
+
+    /* Car carousel */
+    .car-carousel-container { padding: 0 40px !important; }
+
+    /* Destination grid */
+    .dest-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    .dest-card__img { height: 200px !important; }
+    .dest-card--featured .dest-card__img { height: 250px !important; }
+
+    /* Headings */
+    h1.display-3 { font-size: clamp(1.9rem, 3vw, 2.8rem); }
+    .container-xxl h1:not(.display-3) { font-size: clamp(1.5rem, 2.2vw, 2rem); }
+
+    /* Package cards */
+    .popular-packages-carousel .pkg-card-item,
+    .varanasi-packages-carousel .pkg-card-item {
+        max-height: 220px !important;
+    }
+
+    /* About section */
+    .container-xxl .container .row.g-5 { --bs-gutter-y: 1.5rem; }
+
+    /* Inner-page hero header */
+    .hero-header .container .row.justify-content-center.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    .hero-header .display-3 {
+        font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
+    }
+
+    /* Service nav buttons */
+    .service-nav-prev { left: -14px !important; }
+    .service-nav-next { right: -14px !important; }
 }
 
-/* ── 4. Hero text sizing for mid-range monitors (1200–1399px) */
+/* Hero text mid-range monitors (1200–1399px) */
 @media (min-width: 1200px) and (max-width: 1399px) {
     .header-carousel .carousel-content h1.display-3 {
         font-size: clamp(2.2rem, 3.8vw, 3.5rem) !important;
     }
-
     .header-carousel .carousel-content p.fs-4 {
         font-size: clamp(1.05rem, 1.4vw, 1.35rem) !important;
     }
 }
 
-/* ── 5. Container-xxl: remove excessive horizontal padding at
-   1200px that was over-constraining mid-range laptops          */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .container-xxl {
-        padding-left: 2% !important;
-        padding-right: 2% !important;
-    }
-}
+/* ══════════════════════════════════════════════
+   DESKTOP (≥992px) — all rules in one block
+   ══════════════════════════════════════════════ */
+@media (min-width: 992px) {
+    /* Hero offset below fixed navbar */
+    .container-fluid.p-0.mb-0 { margin-top: 50px !important; }
+    .hero-header { margin-top: 50px !important; }
 
-/* ── 6. Booking section: fix column heights on laptops ───── */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .booking.p-5 {
-        padding: 2.5rem !important;
-    }
-
-    .booking .row.g-5 {
-        --bs-gutter-y: 2rem;
-    }
-}
-
-/* ── 7. Timeline: prevent horizontal overflow on mid laptops */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .timeline-container {
-        gap: 14px;
-    }
-
-    .timeline-content {
-        padding: 14px !important;
-    }
-
-    .timeline-icon {
-        width: 60px;
-        height: 60px;
-    }
-
-    .timeline-icon i {
-        font-size: 1.5rem !important;
-    }
-
-    .timeline-number {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
-}
-
-/* ── 8. Car carousel padding tweak for mid laptops ─────────*/
-@media (min-width: 992px) and (max-width: 1199px) {
-    .car-carousel-container {
-        padding: 0 40px !important;
-    }
-}
-
-/* ── 9. Destination grid: ensure correct 4-col only on wide */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .dest-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-    }
-
-    .dest-card__img {
-        height: 200px !important;
-    }
-
-    .dest-card--featured .dest-card__img {
-        height: 250px !important;
-    }
-}
-
-/* ── 10. Section heading size scaling on mid laptops ────────*/
-@media (min-width: 992px) and (max-width: 1199px) {
-    h1.display-3 {
-        font-size: clamp(1.9rem, 3vw, 2.8rem);
-    }
-
-    .container-xxl h1:not(.display-3) {
-        font-size: clamp(1.5rem, 2.2vw, 2rem);
-    }
-}
-
-/* ── 11. Package card carousel: show 3 on laptops properly  */
-@media (min-width: 992px) and (max-width: 1199px) {
+    /* Package cards */
+    .popular-packages-carousel .pkg-card-item,
+    .varanasi-packages-carousel .pkg-card-item,
     .pkg-card-item {
-        border-radius: 16px;
+        max-height: 250px !important;
+        aspect-ratio: 4 / 3 !important;
+        border-radius: 16px !important;
     }
-
-    .pkg-card-title {
-        font-size: 15px !important;
-    }
-
-    .pkg-card-duration {
+    .pkg-card-content { bottom: 14px !important; left: 14px !important; right: 14px !important; }
+    .pkg-card-title { font-size: 14px !important; line-height: 1.25 !important; }
+    .pkg-card-duration { font-size: 12px !important; margin-bottom: 2px !important; }
+    .pkg-card-icon {
+        top: 10px !important; right: 10px !important;
+        width: 28px !important; height: 28px !important;
         font-size: 12px !important;
     }
+
+    /* Footer */
+    .footer .row.g-5 { --bs-gutter-y: 1rem; }
+    .footer .col-lg-3 { flex: 0 0 auto; width: 25%; }
 }
 
-/* ── 12. About section: full-width on mid laptops ───────── */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .container-xxl .container .row.g-5 {
-        --bs-gutter-y: 1.5rem;
-    }
-}
-
-/* ── 13. Footer: ensure columns sit side by side on laptops */
-@media (min-width: 992px) {
-    .footer .row.g-5 {
-        --bs-gutter-y: 1rem;
-    }
-
-    .footer .col-lg-3 {
-        flex: 0 0 auto;
-        width: 25%;
-    }
-}
-
-/* ── 14. Inner-page hero-header: tighter vertical padding ── */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .hero-header .container .row.justify-content-center.py-5 {
-        padding-top: 2rem !important;
-        padding-bottom: 2rem !important;
-    }
-
-    .hero-header .display-3 {
-        font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
-    }
-}
-
-/* ── 15. Service nav buttons: don't bleed off-screen ────── */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .service-nav-prev {
-        left: -14px !important;
-    }
-
-    .service-nav-next {
-        right: -14px !important;
-    }
-}
-
-/* ── 16. Sticky top correction for desktop: ensure content
-   is not hidden behind the fixed navbar on all inner pages  */
-@media (min-width: 992px) {
-    body {
-        padding-top: 0;
-        /* Bootstrap/custom fixed navbar is handled via margin-top */
-    }
-
-    /* Ensure all page body content starts below the fixed navbar */
-    .container-fluid.position-relative.p-0>.hero-header,
-    .container-fluid.position-relative.p-0+.container-xxl {
-        margin-top: 0 !important;
-        /* Siblings of the navbar wrapper: already outside the nav wrapper */
-    }
-}
-
-/* ── 17. Large desktop (≥1400px): premium spacing tweaks ── */
+/* Large desktop (≥1400px) */
 @media (min-width: 1400px) {
     .container-xxl {
         padding-left: 4% !important;
         padding-right: 4% !important;
         max-width: 1500px;
     }
-
     .navbar-light .navbar-nav .nav-link {
         font-size: 17px !important;
         margin-right: 30px !important;
     }
-}
+}

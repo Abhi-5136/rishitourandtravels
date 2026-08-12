@@ -44,8 +44,11 @@
 
 # 3. HTTP Cache-Control & Performance Headers
 <IfModule mod_headers.c>
+    # Enable Keep-Alive connection
+    Header set Connection keep-alive
+
     # Static Assets (Images, Fonts, Media)
-    <FilesMatch "\.(ico|jpe?g|png|gif|webp|svg|woff2?|ttf|otf)$">
+    <FilesMatch "\.(ico|jpe?g|png|gif|webp|avif|svg|woff2?|ttf|otf)$">
         Header set Cache-Control "max-age=31536000, public, immutable"
     </FilesMatch>
 
@@ -63,3 +66,4 @@
     Header unset ETag
 </IfModule>
 FileETag None
+

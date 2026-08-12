@@ -1,17 +1,20 @@
 (function ($) {
     "use strict";
 
-    $(window).on('load', function () {
-
-        // Spinner
+    // Fast spinner removal - hide as soon as DOM is ready or after fallback
+    function hideSpinner() {
         if ($('#spinner').length > 0) {
             $('#spinner').removeClass('show');
         }
+    }
 
+    $(document).ready(function () {
+        hideSpinner();
 
-        // Initiate the wowjs
-        new WOW({ offset: 0 }).init();
-
+        // Initiate wowjs
+        if (typeof WOW !== 'undefined') {
+            new WOW({ offset: 0 }).init();
+        }
 
         // Sticky Navbar
         $(window).scroll(function () {
@@ -21,7 +24,6 @@
                 $('.navbar').removeClass('sticky-top shadow-sm');
             }
         });
-
 
         // Dropdown on mouse hover
         const $dropdown = $(".dropdown");
@@ -50,11 +52,6 @@
             }
         }).trigger("resize");
 
-
-
-
-
-
         // Header carousel
         $(".header-carousel").owlCarousel({
             autoplay: true,
@@ -69,7 +66,6 @@
                 '<i class="bi bi-chevron-right"></i>'
             ]
         });
-
 
         // Testimonials carousel
         $(".testimonial-carousel").owlCarousel({
@@ -123,8 +119,7 @@
             }
         });
 
-
-        // Popular Packages Carousel — 1 full card + partial peek of next card
+        // Popular Packages Carousel — 1 full card + peek on mobile; 3-4 cards on laptop/desktop
         var popPkgCarousel = $(".popular-packages-carousel").owlCarousel({
             autoplay: true,
             smartSpeed: 600,
@@ -135,8 +130,9 @@
             responsive: {
                 0: { items: 1, stagePadding: 60 },
                 576: { items: 1, stagePadding: 80 },
-                768: { items: 1, stagePadding: 120 },
-                992: { items: 2, stagePadding: 60 }
+                768: { items: 2, stagePadding: 40 },
+                992: { items: 3, stagePadding: 20 },
+                1200: { items: 4, stagePadding: 0 }
             }
         });
         $('#pop-pkg-prev').click(function () {
@@ -146,7 +142,7 @@
             popPkgCarousel.trigger('next.owl.carousel');
         });
 
-        // Popular Varanasi Packages Carousel — 1 full card + partial peek of next card
+        // Popular Varanasi Packages Carousel — 1 full card + peek on mobile; 3-4 cards on laptop/desktop
         var vnsPkgCarousel = $(".varanasi-packages-carousel").owlCarousel({
             autoplay: true,
             smartSpeed: 600,
@@ -157,8 +153,9 @@
             responsive: {
                 0: { items: 1, stagePadding: 60 },
                 576: { items: 1, stagePadding: 80 },
-                768: { items: 1, stagePadding: 120 },
-                992: { items: 2, stagePadding: 60 }
+                768: { items: 2, stagePadding: 40 },
+                992: { items: 3, stagePadding: 20 },
+                1200: { items: 4, stagePadding: 0 }
             }
         });
         $('#vns-pkg-prev').click(function () {
@@ -167,7 +164,10 @@
         $('#vns-pkg-next').click(function () {
             vnsPkgCarousel.trigger('next.owl.carousel');
         });
-
     });
+
+    // Fallback safety for spinner
+    setTimeout(hideSpinner, 300);
+    $(window).on('load', hideSpinner);
 
 })(jQuery);

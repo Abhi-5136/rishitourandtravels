@@ -1443,7 +1443,17 @@ img {
 
 @media (max-width: 768px) {
     .car-carousel-container {
-        padding: 0 40px;
+        padding: 0 24px;
+    }
+
+    .car-item .position-relative {
+        height: 180px;
+    }
+
+    .car-item img {
+        height: 180px !important;
+        object-fit: contain !important;
+        background: var(--light);
     }
 
     .car-carousel .owl-nav .owl-prev {

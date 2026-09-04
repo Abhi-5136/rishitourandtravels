@@ -118,6 +118,12 @@
                 992: { items: 3 }
             }
         });
+        $('.carousel-nav-btn').each(function (index) {
+            $(this).on('click', function (event) {
+                event.preventDefault();
+                $('.car-carousel').trigger(index === 0 ? 'prev.owl.carousel' : 'next.owl.carousel');
+            });
+        });
 
         // Popular Packages Carousel — 1 full card + peek on mobile; 3-4 cards on laptop/desktop
         var popPkgCarousel = $(".popular-packages-carousel").owlCarousel({
